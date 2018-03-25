@@ -1,17 +1,63 @@
-//Psychic Game
-
-//The app randomly picks a letter, and the user has to guess which letter the app chose. Put the following text on your page:
+//Hangman
 document.querySelector('.game').innerHTML = '<p>sup</p>';
-//Guess what letter I'm thinking of
 
-//Wins: (# of times the user has guessed the letter correctly)
+//Create an array of words
+var words = [
+    "clone",
+    "force",
+    "galaxy",
+    "imperial",
+    "rebellion",
+    "destiny",
+    "empire",
+    "apprentice",
+    "phantom",
+    "menace",
+    "alliance",
+    "millennium",
+    "deceive",
+    "disturbing",
+    "mission"
+];
 
-//Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
+//Choose a random word
+var word = words[Math.floor(Math.random() * words.length)];
 
-//Guesses Left: (# of guesses left.This will update)
+//Answer array
+var answerArray = [];
+for (var i = 0; i < word.length; i++) {
+    answerArray[i] = "_";
+}
 
-//Your Guesses So Far: (the specific letters that the user typed.Display these until the user either wins or loses.)
+var lettersLeft = word.length;
 
-//When the player wins, increase the Wins counter and start the game over again(without refreshing the page).
+//Looping the game
+while (lettersLeft > 0) {
+    //Player progress
+    alert(answerArray.join(" "));
 
-//When the player loses, increase the Losses counter and restart the game without a page refresh(just like when the user wins).
+    //Player guesses
+    var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+    if (guess === null) {
+        //End game
+        break;
+    } 
+    else if (guess.length !== 1) {
+        alert("Please enter a single letter.");
+    }
+    else {
+        //Update game with guess
+        for (var j = 0; j < word.length; j++) {
+            if (word[j] === guess) {
+                answerArray[j] = guess;
+                lettersLeft--;
+            
+            }
+        }
+    }
+    //Game loop ends
+}
+
+//Show answer
+alert(answerArray.join(" "));
+alert("The force is strong with this one!  The answer was " + word);

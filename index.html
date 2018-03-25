@@ -9,9 +9,25 @@
     
 </head>
 
-<body>
-    
-    <div class="game"></div>
-    <script src="assets/javascript/game.js"></script>
+<body background="assets/images/milkyway.jpg">
+    <div class="wrapper">
+        <h1>Star Wars Hangman</h1>
+        <p>Click on the letters below to guess the mystery word.</p>
+    </div>
+    <div class="wrapper">
+        <div id="buttons">
+        </div>
+        <p id="categoryName"></p>
+        <div id="hold">
+        </div>
+        <p id="mylives"></p>
+        <div class="container">
+            <button id="reset">Play again</button>
+        </div>
+    </div>
+    <script src="assets/javascript/game3.js"></script>
+    <object align="middle|bottom">
+        <audio controls autoplay="true" src="assets/music/swsound.mp3" autostart="true" loop="true">
+    </object>
 </body>
 </html>
